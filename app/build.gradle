@@ -32,6 +32,16 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    flavorDimensions "versionCode"
+    productFlavors {
+        xiaomi{
+        }
+        huawei{
+        }
+        productFlavors.all {//遍历productFlavors多渠道，设置渠道号（xiaomi 、huawei）
+        flavor -> flavor.manifestPlaceholders.put("CHANNEL", name)
+        }
+    }
 }
 
 dependencies {
