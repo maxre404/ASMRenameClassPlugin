@@ -9,7 +9,6 @@ public class MyPlugin implements Plugin<Project> {
 
     @Override
     public void apply(Project project) {
-        System.out.println("++++++++++开始运行+++++++++++++");
         BaseExtension ext = project.getExtensions().findByType(BaseExtension.class);
         if (ext != null) {
             ext.registerTransform(new MyTransform(project));
