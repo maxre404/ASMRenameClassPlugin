@@ -5,7 +5,15 @@ plugins {
     // 添加插件
 //    id 'custom-gradle-plugin'
 }
-
+sourceSets {
+    xiaomi {
+        java {
+//            srcDirs = ['source', 'source-gen']
+//            exclude 'com/tg/asmrenameclassplugin/JacAssists.java'
+            exclude '**/JacAssists.java'
+        }
+    }
+}
 android {
     namespace 'com.tg.asmrenameclassplugin'
     compileSdk 33

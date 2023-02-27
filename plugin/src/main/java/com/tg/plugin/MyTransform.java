@@ -48,7 +48,6 @@ public class MyTransform extends Transform {
         transformInvocation.getInputs().forEach(transformInput -> {
             transformInput.getDirectoryInputs().forEach(directoryInput -> {
                 String path = directoryInput.getFile().getAbsolutePath();
-//                println("[InjectTransform] Begin to inject: $path");
                 System.out.println("查看路径:[InjectTransform] Begin to inject:"+path);
                 InjectByJavassit.inject(path, mProject);
                 // 获取输出目录
