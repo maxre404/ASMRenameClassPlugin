@@ -1,0 +1,38 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenLocal()
+        mavenCentral()
+        gradlePluginPortal()
+        //添加本地仓库
+        maven {
+            allowInsecureProtocol(true)
+            url uri('./repo')
+        }
+
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+        maven { url "https://oss.jfrog.org/libs-snapshot" }
+        maven {
+            url "https://repo.eclipse.org/content/repositories/paho-snapshots/"
+        }
+        //添加本地仓库
+        maven {
+            allowInsecureProtocol(true)
+            url uri('./repo')
+        }
+    }
+}
+rootProject.name = "ASMRenameClassPlugin"
+include ':app'
+//include ':rename_plugin'
+//include ':buildSrc'
+//include ':common_library'
+include ':plugin'

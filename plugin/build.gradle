@@ -1,0 +1,41 @@
+plugins{
+    id 'java-gradle-plugin'  //Gradle开发插件
+    id 'java'              //使用java
+    id "maven-publish"
+}
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+    implementation 'com.android.tools.build:gradle:4.2.2'
+    implementation 'javassist:javassist:3.12.1.GA'
+
+}
+
+//uploadArchives {
+//    repositories.mavenDeployer {
+//        repository(url: uri('../repo')) //仓库的路径，此处是项目根目录下的 repo 的文件夹
+//        pom.groupId = 'com.app.plugin'  //groupId ，自行定义，一般是包名
+//        pom.artifactId = 'gradleplugin' //artifactId ，自行定义
+//        pom.version = '1.0.0' //version 版本号
+//    }
+//}
+publishing {
+    publications{
+        plugin(MavenPublication){
+            group 'com.tg.plugin'
+            artifactId 'myplugin'
+            version '1.0.0'
+            from components.java //使用默认的配置生成jar包
+//            from components.java
+        }
+
+    }
+    repositories {
+        maven {
+            name = 'repo'
+            url = layout.buildDirectory.dir("repo")
+        }
+    }
+
+}
